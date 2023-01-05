@@ -8,18 +8,19 @@
 using namespace llvm;
 
 int main() {
+
     LLVMContext context;
     IRBuilder<> builder(context);
     // Create a module
-    Module* module = new Module("HelloModule", context);
+    Module *module = new Module("HelloModule", context);
 
     // Add a function
-    Type* voidType = Type::getVoidTy(context);
-    FunctionType* functionType = FunctionType::get(voidType, false);
-    Function* function = Function::Create(
+    Type *voidType = Type::getVoidTy(context);
+    FunctionType *functionType = FunctionType::get(voidType, false);
+    Function *function = Function::Create(
         functionType, GlobalValue::ExternalLinkage, "HelloFunction", module);
 
-    BasicBlock* block = BasicBlock::Create(context, "entry", function);
+    BasicBlock *block = BasicBlock::Create(context, "entry", function);
     builder.SetInsertPoint(block);
 
     verifyFunction(*function);

@@ -6,16 +6,16 @@
 
 using namespace llvm;
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
     LLVMContext context;
 
     // Create a module
-    Module* module = new Module("HelloModule", context);
+    Module *module = new Module("HelloModule", context);
 
     // Add a function
-    Type* voidType = Type::getVoidTy(context);
-    FunctionType* functionType = FunctionType::get(voidType, false);
-    Function* function = Function::Create(
+    Type *voidType = Type::getVoidTy(context);
+    FunctionType *functionType = FunctionType::get(voidType, false);
+    Function *function = Function::Create(
         functionType, GlobalValue::ExternalLinkage, "HelloFunction", module);
 
     // Print the IR

@@ -22,24 +22,24 @@ int main() {
     IRBuilder<> builder(context);
 
     // Create a module
-    Module* module = new Module("HelloModule", context);
+    Module *module = new Module("HelloModule", context);
 
     // Add a global var
     module->getOrInsertGlobal("helloGlobalVariable", Type::getInt32Ty(context));
-    GlobalVariable* globalVariable =
+    GlobalVariable *globalVariable =
         module->getNamedGlobal("helloGlobalVariable");
 
     globalVariable->setLinkage(GlobalValue::CommonLinkage);
     globalVariable->setAlignment(MaybeAlign(4));
 
     // Add a function
-    Type* voidType = Type::getVoidTy(context);
-    FunctionType* functionType = FunctionType::get(voidType, false);
-    Function* function = Function::Create(
+    Type *voidType = Type::getVoidTy(context);
+    FunctionType *functionType = FunctionType::get(voidType, false);
+    Function *function = Function::Create(
         functionType, GlobalValue::ExternalLinkage, "HelloFunction", module);
 
     // Create a block
-    BasicBlock* block = BasicBlock::Create(context, "entry", function);
+    BasicBlock *block = BasicBlock::Create(context, "entry", function);
     builder.SetInsertPoint(block);
 
     // Print the IR

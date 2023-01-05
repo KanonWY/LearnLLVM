@@ -20,32 +20,32 @@ int main() {
     IRBuilder<> builder(context);
 
     // Create a module
-    Module* module = new Module("HelloModule", context);
+    Module *module = new Module("HelloModule", context);
 
     // Add a global variable
     module->getOrInsertGlobal("helloGlobalVariable", builder.getInt32Ty());
-    GlobalVariable* globalVariable =
+    GlobalVariable *globalVariable =
         module->getNamedGlobal("helloGlobalVariable");
     globalVariable->setLinkage(GlobalValue::CommonLinkage);
     globalVariable->setAlignment(MaybeAlign(4));
 
     // Add a function with parameters
-    std::vector<Type*> parameters(2, builder.getInt32Ty());
-    FunctionType* functionType =
+    std::vector<Type *> parameters(2, builder.getInt32Ty());
+    FunctionType *functionType =
         FunctionType::get(builder.getInt32Ty(), parameters, false);
 
-    Function* function = Function::Create(
+    Function *function = Function::Create(
         functionType, GlobalValue::ExternalLinkage, "HelloFunction", module);
 
     // Set arguments for the function
     function->getArg(0)->setName("a");
     function->getArg(1)->setName("b");
     // Create a block
-    BasicBlock* block = BasicBlock::Create(context, "entry", function);
+    BasicBlock *block = BasicBlock::Create(context, "entry", function);
     builder.SetInsertPoint(block);
 
     // Add a return
-    ConstantInt* zero = builder.getInt32(0);
+    ConstantInt *zero = builder.getInt32(0);
     builder.CreateRet(zero);
 
     // Print the IR

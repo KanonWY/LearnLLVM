@@ -12,25 +12,25 @@ int main() {
     LLVMContext context;
     IRBuilder<> builder(context);
 
-    Module* module = new Module("HelloModule", context);
+    Module *module = new Module("HelloModule", context);
 
     module->getOrInsertGlobal("helloGlobalVariable", builder.getInt32Ty());
-    GlobalVariable* globalVariable =
+    GlobalVariable *globalVariable =
         module->getNamedGlobal("helloGlobalVariable");
     globalVariable->setLinkage(GlobalValue::CommonLinkage);
     globalVariable->setAlignment(MaybeAlign(4));
 
     // Add a function
-    FunctionType* functionType = FunctionType::get(builder.getInt32Ty(), false);
-    Function* function = Function::Create(
+    FunctionType *functionType = FunctionType::get(builder.getInt32Ty(), false);
+    Function *function = Function::Create(
         functionType, GlobalValue::ExternalLinkage, "HelloFunction", module);
 
     // Create a block
-    BasicBlock* block = BasicBlock::Create(context, "entry", function);
+    BasicBlock *block = BasicBlock::Create(context, "entry", function);
     builder.SetInsertPoint(block);
 
     // Add a return
-    ConstantInt* zero = builder.getInt32(200);
+    ConstantInt *zero = builder.getInt32(200);
     builder.CreateRet(zero);
 
     // Print the IR

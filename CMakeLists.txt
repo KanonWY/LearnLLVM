@@ -10,15 +10,15 @@ set(CMAKE_CXX_STANDARD 17)
 
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-set(CMAKE_CXX_COMPILER "/home/kanon/llvm15/bin/clang++")
-set(CMAKE_C_COMPILER " /home/kanon/llvm15/bin/clang")
+#set(CMAKE_CXX_COMPILER "/home/kanon/llvm15/bin/clang++")
+#set(CMAKE_C_COMPILER " /home/kanon/llvm15/bin/clang")
 
 add_link_options(
 
     # We enforce the lld linker
-    -fuse-ld=lld
-    -Wl,-gc-sections
-    $<$<CONFIG:RELEASE>:-s>
+    #    -fuse-ld=lld
+    # -Wl,-gc-sections
+    # $<$<CONFIG:RELEASE>:-s>
 
     # Do not link against shared libraries
     # --static

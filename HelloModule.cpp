@@ -8,7 +8,7 @@ using namespace llvm;
 int main() {
 
     LLVMContext context;
-    Module* module = new Module("HelloModule", context);
+    Module *module = new Module("HelloModule", context);
 
     module->print(outs(), nullptr);
 

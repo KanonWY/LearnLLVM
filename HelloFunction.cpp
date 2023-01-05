@@ -9,13 +9,13 @@ int main() {
     LLVMContext context;
 
     // Create a module
-    Module* module = new Module("HelloModule", context);
+    Module *module = new Module("HelloModule", context);
 
     // Add a function
-    Type* voidType = Type::getVoidTy(context);
-    FunctionType* functionType = FunctionType::get(voidType, false);
+    Type *voidType = Type::getVoidTy(context);
+    FunctionType *functionType = FunctionType::get(voidType, false);
 
-    Function* function = Function::Create(
+    Function *function = Function::Create(
         functionType, GlobalValue::ExternalLinkage, "HelloFunction", module);
 
     // print IR

@@ -26,8 +26,8 @@ add_link_options(
 
 # LLVM setup =========================================
 find_package(LLVM REQUIRED all-targets CONFIG)
-find_package(MLIR REQUIRED CONFIG)
-find_package(LLD REQUIRED CONFIG)
+#find_package(MLIR REQUIRED CONFIG)
+#find_package(LLD REQUIRED CONFIG)
 
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
 message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
@@ -39,7 +39,7 @@ list(APPEND CMAKE_MODULE_PATH "${LLD_CMAKE_DIR}")
 
 include(TableGen)
 include(AddLLVM)
-include(AddMLIR)
+#include(AddMLIR)
 include(HandleLLVMOptions)
 
 include_directories(SYSTEM ${LLVM_INCLUDE_DIRS})
